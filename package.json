@@ -1,15 +1,16 @@
 {
-  "name": "ts-template",
-  "version": "0.0.0",
-  "description": "a template for typescript project or plugin",
+  "name": "tag-inject",
+  "version": "1.0.0",
+  "description": "Inject tag into html",
   "type": "module",
   "keywords": [
-    "TODO"
+    "tag inject",
+    "html parser"
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hemengke1997/ts-template.git"
+    "url": "git+https://github.com/hemengke1997/tag-inject.git"
   },
   "author": "hemengke <https://github.com/hemengke1997>",
   "files": [
@@ -29,15 +30,10 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "build:pages": "npm run build && cd playground/spa && npm run build",
-    "test": "run-s test:unit test:serve test:build",
-    "test:unit": "vitest run",
-    "test:serve": "vitest run -c vitest.config.e2e.ts",
-    "test:build": "cross-env VITE_TEST_BUILD=1 vitest run -c vitest.config.e2e.ts",
     "commitlint": "commitlint --edit",
     "prepare": "simple-git-hooks",
-    "lint": "eslint .",
-    "up": "taze -I -w -r",
+    "lint": "tsc --noEmit && eslint . --fix",
+    "up": "taze -I -w",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "bump": "bumpp package.json -c --no-push -t --all -x \"npm run changelog\""
   },
@@ -55,10 +51,7 @@
     "simple-git-hooks": "^2.11.1",
     "taze": "^0.16.6",
     "tsup": "^8.2.4",
-    "typescript": "^5.5.4",
-    "vite": "^5.4.2",
-    "vitest": "^2.0.5",
-    "vitest-e2e": "^0.0.10"
+    "typescript": "^5.5.4"
   },
   "simple-git-hooks": {
     "commit-msg": "npm run commitlint",
